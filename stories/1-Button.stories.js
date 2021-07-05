@@ -1,36 +1,24 @@
 import React from "react";
+import { View } from "react-native";
 import { action } from "@storybook/addon-actions";
 import { storiesOf } from "@storybook/react-native";
-import { Button } from "react-native";
-import styled from "styled-components/native";
-
-const StyledButton = styled.TouchableOpacity`
-  background-color: red;
-  padding: 3px;
-`;
-
-const StyledText = styled.Text`
-  color: white;
-`;
+import AlfaButton from "../src/components/Button";
 
 export default {
   title: "Button",
 };
 
-export const text = () => (
-  <Button title="Hello Button" onPress={action("clicked")} />
-);
-export const styledComponent = () => (
-  <StyledButton onPress={action("clicked")}>
-    <StyledText>Hello Button</StyledText>
-  </StyledButton>
-);
-export const red = () => (
-  <Button title="Hello Button" color="red" onPress={action("clicked")} />
+const style = {
+  flex: 1,
+  alignItems: "center",
+  justifyContent: "center",
+};
+
+export const alfaButton = () => (
+  <View style={style}>
+    <AlfaButton label="Alfabeto test button" onPress={action("clicked")} />
+  </View>
 );
 
 // On-Device Register
-storiesOf("Button", module)
-  .add("Text", text)
-  .add("Styled Components", styledComponent)
-  .add("Red", red);
+storiesOf("Button", module).add("AlfaButton", alfaButton);
